@@ -110,3 +110,21 @@ network:
         via: 192.168.100.1   
   version: 2
 ```
+
+## Web
+
+### /etc/netplan/network.yaml
+```
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 192.168.100.4/24
+      nameservers:
+        addresses: [8.8.8.8]
+        search: []
+      routes:
+      - to: default
+        via: 192.168.100.1
+  version: 2
+```
