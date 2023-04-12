@@ -93,7 +93,6 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 }
 ```
 
-
 ## DNS II
 
 ### /etc/netplan/network.yaml
@@ -104,7 +103,7 @@ network:
       addresses:                                   
       - 192.168.100.3/24                           
       nameservers:                                 
-        addresses: []                              
+        addresses: [8.8.8.8]                              
         search: []           
       routes:                
       - to: default          
