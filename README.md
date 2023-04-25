@@ -1,7 +1,7 @@
 # Máquinas configuradas
 
 - Gateway
-- DNS I (DHCP)
+- DNS I (DHCP e DNS)
 - DNS II
 - Web
 
