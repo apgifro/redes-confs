@@ -1,0 +1,19 @@
+@       IN      SOA     dns1.lab.lan. alexandre.lab.lan. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      dns1.lab.lan.
+@       IN      NS      dns2.lab.lan.
+
+@       IN      A       192.168.0.2
+@       IN      A       192.168.0.3
+
+dns1    IN      A       192.168.0.2
+dns2    IN      A       192.168.0.3
+dns     IN      CNAME   dns1.lab.lan.
+
+web     IN      A       192.168.0.4
+www     IN      CNAME   web
