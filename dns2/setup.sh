@@ -16,6 +16,5 @@ echo '[DNS2] DNS secundário configurado!'
 sudo rm -rf /etc/netplan
 sudo mkdir /etc/netplan
 sudo cp network.yaml /etc/netplan
-sudo netplan try
 sudo netplan apply
 echo '[DNS2] Rede configurada!'
