@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# rede
-sudo rm -rf /etc/netplan
-sudo mkdir /etc/netplan
-sudo cp network.yaml /etc/netplan
-sudo netplan try
-sudo netplan apply
-echo '[DNS1] Rede configurada!'
-
 # dhcp
 sudo apt install -y isc-dhcp-server
 sudo rm /etc/dhcp/dhcpd.conf
@@ -35,3 +27,10 @@ sudo cp bind/rev.externa /etc/bind/lab/
 
 sudo systemctl restart bind9
 echo '[DNS1] DNS configurado!'
+
+# rede
+sudo rm -rf /etc/netplan
+sudo mkdir /etc/netplan
+sudo cp network.yaml /etc/netplan
+sudo netplan apply
+echo '[DNS1] Rede reconfigurada!'
