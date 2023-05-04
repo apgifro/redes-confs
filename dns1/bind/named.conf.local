@@ -7,13 +7,13 @@ view "externa" IN {
         zone "lab.lan" {
                 type master;
                 file "/etc/bind/lab/lab.externa";
-                allow-transfer { 192.168.0.103; };
+                allow-transfer { 192.168.100.3; };
         };
 
         zone "0.168.192.in-addr.arpa" {
                 type master;
                 file "/etc/bind/lab/rev.externa";
-                allow-transfer { 192.168.0.103; };
+                allow-transfer { 192.168.100.3; };
         };
 };
 
@@ -22,9 +22,11 @@ view "interna" IN {
         zone "lab.lan" {
           type master;
           file "/etc/bind/lab/lab.interna";
+          allow-transfer { 192.168.100.3; };
         };
         zone "100.168.192.in-addr.arpa" {
           type master;
           file "/etc/bind/lab/rev.interna";
+          allow-transfer { 192.168.100.3; };
         };
 };

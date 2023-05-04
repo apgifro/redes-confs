@@ -4,7 +4,7 @@ network:
       addresses:
       - 192.168.100.3/24
       nameservers:
-        addresses: [8.8.8.8]
+        addresses: [192.168.100.2, 192.168.100.3]
         search: []
       routes:
       - to: default

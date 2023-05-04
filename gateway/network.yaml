@@ -6,7 +6,7 @@ network:
       addresses:
       - 192.168.100.1/24
       nameservers:
-        addresses: [192.168.100.2]
+        addresses: [192.168.100.2, 192.168.100.3]
         search: []
     enp0s9:
       addresses:

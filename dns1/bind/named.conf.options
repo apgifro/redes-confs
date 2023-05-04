@@ -1,13 +1,7 @@
 options {
   directory "/var/cache/bind";
-  version "not available";
-  dnssec-validation no;
-  allow-query { any; };
-  allow-transfer { any; };
+  version "Não disponível.";
   notify yes;
   also-notify { 192.168.100.3; };
-  listen-on-v6 { any; };
-  forwarders {
-                8.8.8.8;
-  };
+  forwarders { 8.8.8.8; };
 };

@@ -1,41 +1,27 @@
 # Serviços de Redes
 
-## Gateway
+## Como usar?
 
-- /etc/netplan/network.yaml
-- ./nat.sh
-
-## DNS I
-
-- /etc/netplan/network.yaml
-- /etc/dhcp/dhcpd.conf
-
-
-- /etc/bind/named.conf.default-zones
-- /etc/bind/named.conf.options
-- /etc/bind/named.conf.local
-- /etc/bind/lab/lab.interna
-- /etc/bind/lab/rev.interna
-- /etc/bind/lab/lab.externa
-- /etc/bind/lab/rev.externa
-
-## DNS II
-
-- /etc/netplan/network.yaml
-
-## Web
-
-- /etc/netplan/network.yaml
+- Crie as máquinas no VirtualBox
+- Clone o repositório em cada uma delas
+- Acesse cada pasta correspondente a máquina
+- Altere os IPs para o seu nos arquivos de configurações
+- Execute o script `setup.sh`
+- Se nenhum erro ocorrer, depois teste e tudo pronto!
+- Boa sorte!
 
 
-## Comandos úteis
+## Como clonar?
 
 ```
-netplan try
-netplan apply
-resolvectl
+git clone https://github.com/apgifro/redes-confs
+```
 
-systemctl restart bind9
+## Comandos úteis na hora de testar
+
+```
+resolvectl
 journalctl -xeu named.service
 named-checkzone lab.interna rev.interna
+ping lab.lan
 ```

@@ -1,0 +1,32 @@
+acl "lab" {
+        192.168.100.0/24;
+};
+
+view "externa" IN {
+  match-clients { !lab; any; };
+        zone "lab.lan" {
+                type slave;
+                file "lab.externa";
+                masters { 192.168.100.2; };
+        };
+
+        zone "0.168.192.in-addr.arpa" {
+                type slave;
+                file "rev.externa";
+                masters { 192.168.100.2; };
+        };
+};
+
+view "interna" IN {
+   match-clients { lab; any; };
+        zone "lab.lan" {
+          type slave;
+          file "lab.interna";
+          masters { 192.168.100.2; };
+        };
+        zone "100.168.192.in-addr.arpa" {
+          type slave;
+          file "rev.interna";
+          masters { 192.168.100.2; };
+        };
+};
