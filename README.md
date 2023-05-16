@@ -83,7 +83,7 @@ alterar o diretório.
 13. `chmod 600 web.csr`
 
 
-14. ` chmod 600 web.key`
+14. `chmod 600 web.key`
 
 
 15. `web2.conf`
