@@ -113,3 +113,32 @@ alterar o diretório.
 
 
 17. `systemctl restart apache2`
+
+## 2023-05-22
+
+1. `sudo apt update`
+
+
+2. `sudo apt install proftpd`
+
+
+
+3. `/etc/proftpd/proftpd.conf`
+
+```
+ServerName  "Server_Aula"
+DefaultRoot ~
+```
+
+
+
+4. `sudo systemctl restart proftpd`
+
+
+
+5. `ftp web.laboratorio.lan`
+
+
+
+6. Filezilla
+
