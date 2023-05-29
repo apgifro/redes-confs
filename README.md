@@ -142,3 +142,41 @@ DefaultRoot ~
 
 6. Filezilla
 
+
+
+## 2023-05-29
+
+```
+iptables -A FORWARD -p udp -s $HOST -d $DNS1 --dport 53 -j ACCEPT
+iptables -A FORWARD -p tcp -s $DNS1 -d $HOST --sport 53 -j ACCEPT
+iptables -t nat -A PREROUTING -p udp -s $HOST -d 192.168.56.2 --dport 53 -j DNAT --to $DNS1:53
+
+
+dentro do gateway
+iptables -A FORWARD -p udp -s $HOST -d $DNS1 --dport 53 -j ACCEPT
+iptables -A FORWARD -p tcp -s $DNS1 -d $HOST --sport 53 -j ACCEPT
+iptables -t nat -A PREROUTING -p udp -s $HOST -d $IP2 --dport 53 -j DNAT --to $DNS1:53
+```
+
+
+1. `sudo apt install nfs-kernel-server -y`
+
+
+
+2. `sudo apt install nfs-common -y`
+
+
+
+3. 
+
+
+
+
+
+
+
+
+
+
+
+
