@@ -175,32 +175,49 @@ iptables -t nat -A PREROUTING -p udp -s $HOST -d $IP2 --dport 53 -j DNAT --to $D
 
 4. Criar `/srv/vendas/Documentos`
 
+
+
 5. `sudo chmod 756 -R vendas/`
+
+
 
 6. `systemctl restart nfs-kernel-server`
 
 
 
-7. Na máquina cliente
-
-Criar /srv/alunos/vendas
-
-sudo mount 192.168.100.2:/srv/vendas/Documentos vendas
-
-sudo chown aluno.aluno vendas/
-
-cd vendas/
-
-mkdir teste
-
-Deve aparecer sincronizado nos dois
+7. Na máquina cliente, montar:
 
 
 
-8. Adicionar no /etc/fstab
+8. Criar `/srv/alunos/vendas`
 
+
+
+- `sudo mount 192.168.100.2:/srv/vendas/Documentos vendas`
+
+
+
+9. `sudo chown aluno.aluno vendas/`
+
+
+
+10. `cd vendas/`
+
+
+
+11. `mkdir teste`
+
+
+
+- Deve aparecer sincronizado nos dois
+
+
+
+12. Adicionar no `/etc/fstab`
+
+```
 192.168.100.2:/srv/vendas/Documentos	/srv/aluno/vendas	nfs	defaults	0 0
-
+```
 
 
 
