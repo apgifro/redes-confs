@@ -185,7 +185,7 @@ iptables -t nat -A PREROUTING -p udp -s $HOST -d $IP2 --dport 53 -j DNAT --to $D
 
 
 
-7. Na máquina cliente, montar:
+- Na máquina cliente, montar:
 
 
 
@@ -193,19 +193,19 @@ iptables -t nat -A PREROUTING -p udp -s $HOST -d $IP2 --dport 53 -j DNAT --to $D
 
 
 
-- `sudo mount 192.168.100.2:/srv/vendas/Documentos vendas`
+9. `sudo mount 192.168.100.2:/srv/vendas/Documentos vendas`
 
 
 
-9. `sudo chown aluno.aluno vendas/`
+10. `sudo chown aluno.aluno vendas/`
 
 
 
-10. `cd vendas/`
+11. `cd vendas/`
 
 
 
-11. `mkdir teste`
+12. `mkdir teste`
 
 
 
@@ -213,7 +213,7 @@ iptables -t nat -A PREROUTING -p udp -s $HOST -d $IP2 --dport 53 -j DNAT --to $D
 
 
 
-12. Adicionar no `/etc/fstab`
+13. Adicionar no `/etc/fstab`
 
 ```
 192.168.100.2:/srv/vendas/Documentos	/srv/aluno/vendas	nfs	defaults	0 0
