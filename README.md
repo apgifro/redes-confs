@@ -167,7 +167,39 @@ iptables -t nat -A PREROUTING -p udp -s $HOST -d $IP2 --dport 53 -j DNAT --to $D
 
 
 
-3. 
+3. sudo vim /etc/exports
+
+```
+/srv/vendas/Documentos  192.168.100.0/24(rw,no_root_squash,sync)
+```
+
+4. Criar `/srv/vendas/Documentos`
+
+5. `sudo chmod 756 -R vendas/`
+
+6. `systemctl restart nfs-kernel-server`
+
+
+
+7. Na máquina cliente
+
+Criar /srv/alunos/vendas
+
+sudo mount 192.168.100.2:/srv/vendas/Documentos vendas
+
+sudo chown aluno.aluno vendas/
+
+cd vendas/
+
+mkdir teste
+
+Deve aparecer sincronizado nos dois
+
+
+
+8. Adicionar no /etc/fstab
+
+192.168.100.2:/srv/vendas/Documentos	/srv/aluno/vendas	nfs	defaults	0 0
 
 
 
