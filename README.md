@@ -1,35 +1,49 @@
 # Serviços de Redes
 
+## Imagens
+
 ![Moodle](/readme/images/moodle.png)
 
-## Como?
+## Passo a passo
 
-### Adicionar ao sudoers
+### Geral
+
+1. Adicione seu usuário ao sudoers:
 
 ```
 $ su -
-$ usermod -aG sudo alexandre
-$ su - alexandre
+$ usermod -aG sudo username
+$ su - username
 ```
 
-### Configurar rede
+2. Ative o serviço de rede:
 
 ```
 $ sudo mv /etc/network/interfaces /etc/network/interfaces.save
 $ systemctl enable systemd-networkd
 ```
 
-### DHCP
+3. Configure cada rede em `/etc/systemd/network`.
+
+### Como configurar o Gateway?
+
+1. Execute o script `nat.sh`:
 
 ```
-$ /etc/default/isc-dhcp-server
+$ sudo chmod +x nat.sh
+$ sudo ./nat.sh
 ```
 
-## Gateway
+2. Verifique as regras com `sudo iptables -t nat -L`.
 
-```
-sudo iptables -t nat -L
-```
+### Como configurar o DNS primário?
+
+1. Instale o pacote `isc-dhcp-server` para o DHCP.
+
+2. Atualize `/etc/default/isc-dhcp-server` para usar IPv4 com [esta configuração](servers/dns1/dhcp/isc-dhcp-server).
+
+3. Adicione as configurações em `/etc/dhcp/dhcpd.conf` com [esta configuração](servers/dns1/dhcp/dhcpd.conf).
+
 
 ## Como gerar chaves?
 
