@@ -1,5 +1,7 @@
 # Serviços de Redes
 
+![Moodle](/readme/images/moodle.png)
+
 ## Como?
 
 ### Adicionar ao sudoers
