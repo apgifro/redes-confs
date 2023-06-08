@@ -2,5 +2,5 @@
 Name=enp0s3
 
 [Network]
-Address=172.16.1.3/24
+Address=172.16.1.4/24
 Gateway=172.16.1.1
