@@ -1,0 +1,6 @@
+[Match]
+Name=enp0s3
+
+[Network]
+Address=172.16.1.2
+Gateway=172.16.1.1

@@ -1,0 +1,6 @@
+[Match]
+Name=enp0s9
+
+[Network]
+Address=192.168.56.2/24
+Address=192.168.56.3/24

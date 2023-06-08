@@ -1,0 +1,17 @@
+$TTL    604800
+@       IN      SOA     dns1.laboratorio.lan. alexandre.laboratorio.lan. (
+                                5               ; Serial
+                                605800          ; Refresh
+                                86400           ; Retry
+                                2419200         ; Expire
+                                604800 )        ; Negative Cache
+@       IN      NS      dns1.laboratorio.lan.
+@       IN      NS      dns2.laboratorio.lan.
+@       IN      A       192.168.56.2
+@       IN      A       192.168.56.3
+dns1    IN      A       192.168.56.2
+dns2    IN      A       192.168.56.3
+ns1     IN      CNAME   dns1.laboratorio.lan.
+ns2     IN      A       192.168.56.3
+ava     IN      A       192.168.56.2
+www     IN      A       192.168.56.2

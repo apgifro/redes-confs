@@ -7,7 +7,7 @@ sudo cp network.yaml /etc/netplan
 sudo netplan apply
 echo '[Gateway] Rede configurada!'
 
-# iptables
+# firewall
 sudo chmod +x nat.sh
 sudo ./nat.sh
 echo '[Gateway] NAT ativo!'

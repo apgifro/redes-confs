@@ -1,0 +1,68 @@
+key chave-interna {
+        algorithm HMAC-MD5;
+        secret "XV9aQWoCTD3emo3L2nN6rA==";
+};
+
+key chave-externa {
+        algorithm HMAC-MD5;
+        secret "5ySUSAhGLde8nyawQgrHYA==";
+};
+
+acl "interno" {
+        !key chave-externa;
+        key chave-interna;
+        172.16.1.0/24;
+};
+
+acl "externo" {
+        !key chave-interna;
+        key chave-externa;
+        192.168.56.0/24;
+};
+
+view "interna" IN {
+        match-clients { interno; };
+        allow-transfer { key chave-interna; };
+
+        zone "laboratorio.lan" {
+                type primary;
+                file "/etc/bind/laboratorio/lan.interna";
+                also-notify { 172.16.1.3 key chave-interna; };
+        };
+
+        zone "prova.lan" {
+                type primary;
+                file "/etc/bind/prova/lan.interna";
+                also-notify { 172.16.1.3 key chave-interna; };
+        };
+
+        zone "1.16.172.in-addr.arpa" {
+                type primary;
+                file "/etc/bind/rev/rev.interna";
+                also-notify { 172.16.1.3 key chave-interna; };
+        };
+};
+
+
+view "externa" IN {
+        match-clients { externo; };
+        allow-transfer { key chave-externa; };
+
+        zone "laboratorio.lan" {
+                type primary;
+                file "/etc/bind/laboratorio/lan.externa";
+                also-notify { 172.16.1.3 key chave-externa; };
+        };
+
+        zone "prova.lan" {
+                type primary;
+                file "/etc/bind/prova/lan.externa";
+                also-notify { 172.16.1.3 key chave-externa; };
+        };
+
+        zone "56.168.192.in-addr.arpa" {
+                type primary;
+                file "/etc/bind/rev/rev.externa";
+                also-notify { 172.16.1.3 key chave-externa; };
+        };
+};
