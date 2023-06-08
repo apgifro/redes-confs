@@ -1,10 +1,22 @@
 # Serviços de Redes
 
+## Sobre
+
+Configurações e passo a passo para a prova de Serviços de Redes I.
+
+Ferramentas e serviços:
+
+- VirtualBox `7.0` + Debian `11 Bullseye`
+- DHCP `isc-dhcp-server` (dns1)
+- DNS `bind9` (dns1 e dns2)
+- Apache `apache2` (web)
+- FTP + NFS (storage)
+
 ## Imagens
 
 ![Moodle](/readme/images/moodle.png)
 
-## Passo a passo
+## Precisa de ajuda?
 
 ### Iniciando
 
@@ -71,7 +83,7 @@ $ sudo ./nat.sh
 
 6. Adicione os arquivos do DNS [daqui](/servers/dns1/dns) em `/etc/bind` e faça as alterações necessárias.
 
-7. As chaves presentes no [arquivo](/servers/dns1/dns/named.conf.local) são para correto funcionamento do DNS secundário com a utilização de Views/ACLs. As Views foram utilizadas para entregar um endereço diferente para os servidores `(172.16.1.x)` e a máquina hospedeira `(apenas 192.168.56.2)`. O encaminhando no [nat.sh](servers/gateway/firewall/nat.sh) dará o caminho certo para o hospedeiro acessar os servidores. O propósito é que o hospedeiro, que seria a simulação de um cliente na Internet, conheça através do DNS apenas o servidor Gateway `(192.168.56.2)`, que encaminhará cada serviço, respectivamente, SSH (porta 22), DNS (porta 53) e principalmente o Apache/Web (porta 443 e 80) para os servidores internos. O cliente externo não precisa conhecer as regras de DNS da rede interna / dos servidores. 
+7. As chaves presentes no [named.conf.local](/servers/dns1/dns/named.conf.local) são para correto funcionamento do DNS secundário (configurado na sequência) com a utilização de Views/ACLs. As Views foram utilizadas para entregar um endereço diferente para os servidores `receberão (172.16.1.x)` e a máquina hospedeira `receberá (apenas 192.168.56.2)`. O [nat.sh](servers/gateway/firewall/nat.sh) dará o caminho certo para o hospedeiro acessar os servidores. O propósito é que o hospedeiro, que seria a simulação de um cliente na Internet, conheça através do DNS apenas o servidor Gateway `(192.168.56.2)`, que encaminhará cada serviço, respectivamente, SSH (porta 22), DNS (porta 53) e principalmente o Apache/Web (porta 443 e 80) para os servidores internos. O cliente externo não precisa conhecer as regras de DNS da rede interna / dos servidores. Ao estar na rede externa, o principal serviço acessível é o Web, que entregará os sites configurados depois.
 
 8. Para gerar a chave, utilize os seguintes comandos e atualize a chave gerada no [named.conf.local](servers/dns1/dns/named.conf.local):
 
@@ -82,7 +94,7 @@ tsig-keygen -a HMAC-MD5 chaveexterna
 
 9. Reinicie o serviço com `sudo systemctl restart bind9`.
 
-10. Verifique o status com `sudo systemctl status bind9`
+10. Verifique o status com `sudo systemctl status bind9`.
 
 10. Caso aconteça algum erro, entre como superusuário e veja os logs:
 
@@ -90,3 +102,9 @@ tsig-keygen -a HMAC-MD5 chaveexterna
 rndc querylog
 journalctl
 ```
+
+### Configurando o DNS Secundário
+
+### Configurando o Web / Apache
+
+### Configurando o Storage
